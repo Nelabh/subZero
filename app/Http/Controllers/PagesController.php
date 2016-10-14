@@ -14,7 +14,7 @@ class PagesController extends BaseController
 			return Redirect::route('dashboard');
 		}
 	}
-	public function loginform(){
+	public function loginForm(){
 		if(!Auth::check()){
 			return view('login');
 		}
@@ -22,13 +22,21 @@ class PagesController extends BaseController
 			return Redirect::route('dashboard');
 		}	
 	}
-	public function signupform(){
-	if(!Auth::check()){
+	public function signupForm(){
+		if(!Auth::check()){
 			return view('signup');
 		}
 		else{
 			return Redirect::route('dashboard');
 		}	
+	}
+	public function adminLoginForm(){
+		if(!Auth::check()){
+			return view('adminLogin');
+		}
+		else{
+			return Redirect::route('dashboard');
+		}
 	}
 
 }
