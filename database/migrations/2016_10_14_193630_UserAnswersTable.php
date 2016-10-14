@@ -19,8 +19,8 @@ class UserAnswersTable extends Migration
         $table->integer('question_id')->unsigned();
         $table->integer('obtained_marks')->default(0);
         $table->boolean('eval')->default(false);
-        $table->foreign('user_id')->references('id')->on('users');
-        $table->foreign('question_id')->references('id')->on('questions');
+        $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
     });
   }
 

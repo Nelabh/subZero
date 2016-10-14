@@ -14,9 +14,13 @@
 Route::get('/',array('as'=>'home','uses'=>'PagesController@root'));
 Route::get('signup',array('as'=>'signup','uses'=>'PagesController@signupForm'));
 Route::get('login',array('as'=>'login','uses'=>'PagesController@loginForm'));
+Route::get('dashboard',array('as'=>'dashboard','uses'=>'UserController@dashboard'));
+Route::get('logout',array('as'=>'logout','uses'=>'PagesController@logout'));
 Route::post('login', array('as'=>'login','uses'=>'PagesController@login'));
+Route::post('admin', array('as'=>'adminlogin','uses'=>'PagesController@adminLogin'));
 Route::post('signup', array('as'=>'signup','uses'=>'PagesController@signup'));
 Route::get('admin',array('as'=>'adminlogin','uses'=>'PagesController@adminLoginForm'));
+
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 
 });

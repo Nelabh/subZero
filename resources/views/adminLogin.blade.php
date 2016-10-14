@@ -51,6 +51,7 @@
                             <input type="password" class="form-control" placeholder="Password" name = "password" required="">
                         </div>
                         <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+                        {{csrf_field()}}
 
                     </form>
                     <p class="m-t">

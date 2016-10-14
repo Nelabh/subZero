@@ -35,39 +35,48 @@
                     <input type="email" class="form-control" name = "email" placeholder="Email" required="">
                 </div> 
                 <div class="form-group">
-                    <input type="text" class="form-control" name = "contact" placeholder="Contact Number" required="">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" name = "password" placeholder="Password" required="">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" name = "password_confirmation" placeholder="Confirm Password" required="">
-                </div>
-               
-                <button type="submit" class="btn btn-primary block full-width m-b">Register</button>
+                 <select class="form-control m-b" name="gender">
+                    <option value = "">Gender</option>
+                    <option value = "m">Male</option>
+                    <option value =  "f">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name = "contact" placeholder="Contact Number" required="">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name = "password" placeholder="Password" required="">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name = "password_confirmation" placeholder="Confirm Password" required="">
+            </div>
 
-                <p class="text-muted text-center"><small>Already have an account?</small></p>
-                <a class="btn btn-sm btn-white btn-block" href="{{URL::route('login')}}">Login</a>
-                <p class="text-muted text-center"><small>Admin Login?</small></p>
-                <a class="btn btn-sm btn-white btn-block" href="{{URL::route('adminlogin')}}">Admin Login</a>
-            </form>
-            <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
-        </div>
+            <button type="submit" class="btn btn-primary block full-width m-b">Register</button>
+
+            <p class="text-muted text-center"><small>Already have an account?</small></p>
+            <a class="btn btn-sm btn-white btn-block" href="{{URL::route('login')}}">Login</a>
+            <p class="text-muted text-center"><small>Admin Login?</small></p>
+            <a class="btn btn-sm btn-white btn-block" href="{{URL::route('adminlogin')}}">Admin Login</a>
+                        {{csrf_field()}}
+            
+        </form>
+        <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
     </div>
+</div>
 
-    <!-- Mainly scripts -->
-    <script src="js/jquery-2.1.1.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- iCheck -->
-    <script src="js/plugins/iCheck/icheck.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('.i-checks').iCheck({
-                checkboxClass: 'icheckbox_square-green',
-                radioClass: 'iradio_square-green',
-            });
-        });
-    </script>
+<!-- Mainly scripts -->
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- iCheck -->
+<script src="js/plugins/iCheck/icheck.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-green',
+        radioClass: 'iradio_square-green',
+    });
+});
+</script>
 </body>
 
 </html>

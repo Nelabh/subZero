@@ -20,7 +20,7 @@ class UserDetailsTable extends Migration
         $table->string('contact',11);
         $table->boolean('eval')->default(false);
         $table->integer('marks')->default(0);
-        $table->foreign('user_id')->references('id')->on('users');
+        $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
     });
    }
