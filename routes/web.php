@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+Route::get('/',array('as'=>'home','uses'=>'PagesController@root'));
+Route::get('signup',array('as'=>'signup','uses'=>'PagesController@signupform'));
+Route::get('login',array('as'=>'login','uses'=>'PagesController@loginform'));
+
+
 
