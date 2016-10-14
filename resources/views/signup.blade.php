@@ -27,19 +27,23 @@
             </div>
             <h3>Register to IN+</h3>
             <p>Create account to see it in action.</p>
-            <form class="m-t" role="form" action="login.html">
+            <form class="m-t" role="form" method = "post" action="{{URL::route('signup')}}">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Name" required="">
+                    <input type="text" class="form-control" name = "name" placeholder="Name" required="">
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email" required="">
+                    <input type="email" class="form-control" name = "email" placeholder="Email" required="">
+                </div> 
+                <div class="form-group">
+                    <input type="text" class="form-control" name = "contact" placeholder="Contact Number" required="">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required="">
+                    <input type="password" class="form-control" name = "password" placeholder="Password" required="">
                 </div>
                 <div class="form-group">
-                        <div class="checkbox i-checks"><label> <input type="checkbox"><i></i> Agree the terms and policy </label></div>
+                    <input type="password" class="form-control" name = "password_confirmation" placeholder="Confirm Password" required="">
                 </div>
+               
                 <button type="submit" class="btn btn-primary block full-width m-b">Register</button>
 
                 <p class="text-muted text-center"><small>Already have an account?</small></p>

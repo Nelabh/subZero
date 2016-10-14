@@ -44,11 +44,11 @@
             <div class="col-md-6">
                 <div class="ibox-content">
                     <form class="m-t" role="form" action="index.html">
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Username" required="">
+                       <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email" name = "email" required="">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Password" required="">
+                            <input type="password" class="form-control" placeholder="Password" name = "password" required="">
                         </div>
                         <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
 
