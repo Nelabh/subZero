@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\User;
-class UserController extends Controller
+use App\TestConfiguration;
+class TestConfigurationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return json_encode(User::all());  
+       return json_encode(TestConfiguration::all());  
    }
 
     /**
@@ -36,17 +36,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $user = new User;
-        $user->name = $data['name'];
-        $user->email = $data['email'];
-        $user->password = $data['password'];
-        $user->gender = $data['gender'];
-        $user->contact = $data['contact'];
-        $user->type = 'User';
-        $user->marks = 0;
-        $user->eval = false;
-        $user->save();
+        //
     }
 
     /**
@@ -57,9 +47,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        return json_encode($user);
+        //
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -81,15 +71,13 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        User::where('id', $id)->update(array(
-            'name'    =>  $data['name'],
-            'email'   =>  $data['email'],
-            'contact'   =>  $data['contact'],
-            'gender'   =>  $data['gender'],
-            'marks'   =>  $data['marks'],
-            'eval'   =>  $data['eval']
-            )); 
-   }
+        TestConfiguration::where('id', $id)->update(array(
+            'active'             =>  $data['active'],
+            'total_questions'    =>  $data['total_questions'],
+            'total_timer'        =>  $data['total_timer'],
+            'question_timer'     =>  $data['question_timer']
+            ));
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -99,14 +87,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();  
-   }
-   public function checkemail(Request $request){
-        $email = $request->get('email');
-        if(count(User::where('email',$email)->first())){
-            return User::where('email',$email)->first();
-        }
-        return 0;
-   }
+        //
+    }
 }

@@ -11,3 +11,12 @@
 |
 */
 Route::resource('user', 'UserController');
+Route::resource('question', 'QuestionController');
+Route::resource('useranswer', 'UserAnswerController');
+
+Route::resource('testconfiguration', 'TestConfigurationController',['only' => [
+    'index', 'update'
+]]);
+
+Route::get('checkemail',['as'=>'checkemail','uses'=>'UserController@checkemail']);
+Route::get('randomquestions',['as'=>'randomquestions','uses'=>'QuestionController@randomquestions']);

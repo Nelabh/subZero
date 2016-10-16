@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\User;
-class UserController extends Controller
+use App\Question;
+use App\TestConfiguration;
+class QuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return json_encode(User::all());  
-   }
+        return json_encode(Question::all());  
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -36,17 +37,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $user = new User;
-        $user->name = $data['name'];
-        $user->email = $data['email'];
-        $user->password = $data['password'];
-        $user->gender = $data['gender'];
-        $user->contact = $data['contact'];
-        $user->type = 'User';
-        $user->marks = 0;
-        $user->eval = false;
-        $user->save();
+       $data = $request->all();
+       $question = new Question;
+       $question->question = $data['question'];
+       $question->max_marks = $data['max_marks'];
+       $question->save();
     }
 
     /**
@@ -57,9 +52,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        return json_encode($user);
+       $question = Question::find($id);
+        return json_encode($question);
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -81,15 +77,11 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        User::where('id', $id)->update(array(
-            'name'    =>  $data['name'],
-            'email'   =>  $data['email'],
-            'contact'   =>  $data['contact'],
-            'gender'   =>  $data['gender'],
-            'marks'   =>  $data['marks'],
-            'eval'   =>  $data['eval']
+        Question::where('id', $id)->update(array(
+            'question'    =>  $data['question'],
+            'max_marks'   =>  $data['max_marks']
             )); 
-   }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -99,14 +91,18 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();  
-   }
-   public function checkemail(Request $request){
-        $email = $request->get('email');
-        if(count(User::where('email',$email)->first())){
-            return User::where('email',$email)->first();
+        $question = Question::find($id);
+        $question->delete();
+    }
+    public function randomQuestions(){
+        $TestConfiguration = TestConfiguration::find(1);
+        if(count($TestConfiguration)){
+        $questions = Question::all();
+        $totalQuestions = $TestConfiguration->total_questions;
+        $randRows = $questions->shuffle()->slice(0,$totalQuestions);
+        return json_encode($randRows);    
         }
-        return 0;
-   }
+        return null;
+        
+    }
 }
