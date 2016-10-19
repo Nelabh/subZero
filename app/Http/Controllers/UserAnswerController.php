@@ -44,8 +44,6 @@ class UserAnswerController extends Controller
         $useranswer->eval = $data['eval'];
         $useranswer->obtained_marks = $data['obtained_marks'];
         $useranswer->save();
-
-
     }
 
     /**
@@ -97,5 +95,9 @@ class UserAnswerController extends Controller
     {
         $useranswer = UserAnswer::find($id);
         $useranswer->delete();
+    }
+    public function groupbyuser($id){
+        $answers = UserAnswer::where('user_id',$id)->get();
+        return json_encode($answers);
     }
 }

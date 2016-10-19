@@ -20,3 +20,5 @@ Route::resource('testconfiguration', 'TestConfigurationController',['only' => [
 
 Route::get('checkemail',['as'=>'checkemail','uses'=>'UserController@checkemail']);
 Route::get('randomquestions',['as'=>'randomquestions','uses'=>'QuestionController@randomquestions']);
+Route::get('groupbyuser/{id}',['as'=>'groupbyuser','uses'=>'UserAnswerController@groupbyuser']);
+Route::post('evaluate',['as'=>'evaluate','uses'=>'UserController@evaluate']);

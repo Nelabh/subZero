@@ -109,4 +109,11 @@ class UserController extends Controller
         }
         return 0;
    }
+   public function evaluate(Request $request){
+        $data = $request->all();
+        $user = User::find($data['id']);
+        $user->marks = $data['marks'];
+        $user->eval = 1;
+        $user->save();
+   }
 }
